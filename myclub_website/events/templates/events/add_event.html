@@ -1,12 +1,12 @@
 {% extends 'events/base.html' %}
 
-{% block title %}Events home{% endblock %}
+{% block title %}Add Event{% endblock %}
 
 {% block content %}
-    <h1>Add Venue To Database</h1>
+    <h1>Add Event</h1>
 
     {% if submitted %}
-    Your Venue Was Submitted Succesfully.
+    Your Event Was Submitted Succesfully.
     {% else %}
     <form action="" method="POST">
         {% csrf_token %}

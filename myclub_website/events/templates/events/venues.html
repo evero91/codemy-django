@@ -3,10 +3,32 @@
 {% block title %}Venues{% endblock %}
 
 {% block content %}
-    <h1>Venues</h1>
+<h1>Venues</h1>
 
-    {% for venue in list_venues %}
-    {{ venue }}
-    {% endfor %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Venue</th>
+            <th scope="col">Address</th>
+            <th scope="col">Phone</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for venue in venue_list %}
+        <tr>
+            <th scope="row">{{ venue.id }}</th>
+            <td><a href="{% url 'show-venue' venue.id %}">{{ venue }}</a></td>
+            <td>{{ venue.address }}</td>
+            <td>{{ venue.phone }}</td>
+            <td align="right">
+                <a class="btn btn-outline-danger btn-sm" href="{% url 'delete-venue' venue.id %}">Delete</a>
+                <a class="btn btn-outline-secondary btn-sm" href="{% url 'update-venue' venue.id %}">Update</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 
 {% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'events/base.html' %}
+
+{% block title %}Update Venue{% endblock %}
+
+{% block content %}
+
+<h1>Update Venue</h1>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn btn-primary" value="Update">
+</form>
+
+
+{% endblock %}

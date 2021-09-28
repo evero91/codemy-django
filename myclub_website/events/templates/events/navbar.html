@@ -10,14 +10,25 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'listevents' %}">Events</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownEvent" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Events
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownEvent">
+                        <li><a class="dropdown-item" href="{% url 'listevents' %}">Events</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add-event' %}">Add Event</a></li>
+                    </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'add-venue' %}">Add Venue</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'list-venues' %}">Venues</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownVenue" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Venues
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownVenue">
+                        <li><a class="dropdown-item" href="{% url 'list-venues' %}">Venues</a></li>
+                        <li><a class="dropdown-item" href="{% url 'add-venue' %}">Add Venue</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'home' '2021' 'november' %}">November</a>
@@ -37,8 +48,9 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-flex" method="POST" action="{% url 'search-venues' %}">
+                {% csrf_token %}
+                <input class="form-control me-2" name="search" type="search" placeholder="Search Venues" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
